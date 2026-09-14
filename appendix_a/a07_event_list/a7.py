@@ -29,3 +29,30 @@ heappush(Event_List, (2, "Fully_Charged"))
 # Print the first item in the heap
 print("=== Heap Queue ===")
 print(heappop(Event_List))
+
+
+# A.7.3 Sorted a List
+# The first field is always the time
+e1 = (10, "Arrival")
+e2 = (5, "Departure")
+e3 = (2, "Fully_Charged")
+
+Event_ListDefault = []
+Event_ListTest = []
+
+# default
+Event_ListDefault += [e1]
+Event_ListDefault += [e2]
+Event_ListDefault += [e3]
+Event_ListDefault.sort()
+
+# test
+Event_ListTest += [e2]
+Event_ListTest += [e1]
+Event_ListTest += [e3]
+Event_ListTest.sort()
+
+print("=== Sorted - default List ===")
+print(Event_ListDefault)
+print("=== Sorted - test List ===")
+print(Event_ListTest)

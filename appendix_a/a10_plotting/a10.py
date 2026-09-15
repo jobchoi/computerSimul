@@ -99,6 +99,7 @@ def Erlang():
     for i in range(k) :
         u = random()
         x = (-1 /theta) * log(u) # Exponetial variate
+        y += x
     return y
 
 N = 10000
@@ -108,8 +109,9 @@ for i in range(N) :
 
 bins = 100
 
-w = [1/len(v) * len(v)]
+w = [1/len(v)] * len(v)
 
+hist(v, bins, weights = w)
 
 xlabel("Y")
 ylabel("P(y)")

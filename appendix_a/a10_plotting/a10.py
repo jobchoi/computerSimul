@@ -1,9 +1,12 @@
 # A.10 PLOTTINGo
+from random import *
+from math import *
 
-# from random import *
-# from math import *
-# from matplotlib.pyplot import *
-# from numpy import *
+import matplotlib
+matplotlib.use("Agg")
+
+from matplotlib.pyplot import *
+from numpy import *
 
 # def pdf(x,a,b,c):
 #     if x < a:
@@ -14,12 +17,11 @@
 #     elif x == c:
 #         return 2 / (b-a)
 #     elif x > c and x <= b:
-#         return 0
+#         return (2 * (b-x)) / ((b-a)*(b-c))
 #     elif x > b:
 #         return 0
 #     else:
 #         print("Error")
-
 
 # a=1
 # b=10
@@ -39,25 +41,19 @@
 # plot(X,Y,linewidth=2)
 
 # # Show figure on screen
-# show()
+# # show()
 
 # # Save figure to hard disk
-# savefig("triangular_pdf.pdf",format="pdf",bbox_inches="tight")
+# savefig("triangular_pdf.pdf", format="pdf",bbox_inches="tight")
 
 
 
 # # A.10.2
-# # Code for generating Figure 10.6(a)
-# from random import *
-# from math import *
-# from matplotlib.pyplot import *
-# from numpy import *
-
+# Code for generating Figure 10.6(a)
 # def pdf(x):
 #     k=10
 #     theta = 1.0
-#     return (x**(k-1) * theta**k * exp(-1 * theta * x))
-#     factorial(k-1)
+#     return (x**(k-1) * theta**k * exp(-1 * theta * x)) / factorial(k-1)
 # X = arange(0, 50, 0.1)
 # Y = []
 
@@ -87,22 +83,17 @@
 
 # A.10.3
 # Code for generating Figure 10.6(b)
-from random import *
-from math import *
-from matplotlib.pyplot import *
-from statistics import *
-
 def Erlang():
     k = 10
     theta = 1.0
     y = 0
     for i in range(k) :
-        u = random()
-        x = (-1 /theta) * log(u) # Exponetial variate
+        u = random.random()
+        x = (-1 /theta) * log(u) # Exponential variate
         y += x
     return y
 
-N = 10000
+N = 100000
 v = []
 for i in range(N) : 
     v.append(Erlang())
@@ -121,6 +112,6 @@ gca().axes.get_yaxis().set_ticklabels([])
 # Remove ticks along y-axis
 gca().axes.get_yaxis().set_tick_params(width=0)
 
-savefig("erlan_plot_hist.pdf", format="pdf", bbox_inches="tight")
+savefig("erlang_plot_hist.pdf", format="pdf", bbox_inches="tight")
 
 print("Mean = ",mean(v))
